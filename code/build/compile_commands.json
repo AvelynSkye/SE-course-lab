@@ -1,0 +1,140 @@
+[
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_core.dir\\app\\seed.cpp.obj /FdCMakeFiles\\campus_core.dir\\campus_core.pdb /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\app\\seed.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\app\\seed.cpp",
+  "output": "CMakeFiles\\campus_core.dir\\app\\seed.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_core.dir\\domain\\datetime.cpp.obj /FdCMakeFiles\\campus_core.dir\\campus_core.pdb /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\domain\\datetime.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\domain\\datetime.cpp",
+  "output": "CMakeFiles\\campus_core.dir\\domain\\datetime.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_core.dir\\domain\\enums.cpp.obj /FdCMakeFiles\\campus_core.dir\\campus_core.pdb /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\domain\\enums.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\domain\\enums.cpp",
+  "output": "CMakeFiles\\campus_core.dir\\domain\\enums.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_core.dir\\infra\\csv_util.cpp.obj /FdCMakeFiles\\campus_core.dir\\campus_core.pdb /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\infra\\csv_util.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\infra\\csv_util.cpp",
+  "output": "CMakeFiles\\campus_core.dir\\infra\\csv_util.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_core.dir\\infra\\data_store.cpp.obj /FdCMakeFiles\\campus_core.dir\\campus_core.pdb /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\infra\\data_store.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\infra\\data_store.cpp",
+  "output": "CMakeFiles\\campus_core.dir\\infra\\data_store.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_core.dir\\infra\\security.cpp.obj /FdCMakeFiles\\campus_core.dir\\campus_core.pdb /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\infra\\security.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\infra\\security.cpp",
+  "output": "CMakeFiles\\campus_core.dir\\infra\\security.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_core.dir\\service\\activity_service.cpp.obj /FdCMakeFiles\\campus_core.dir\\campus_core.pdb /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\service\\activity_service.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\service\\activity_service.cpp",
+  "output": "CMakeFiles\\campus_core.dir\\service\\activity_service.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_core.dir\\service\\audit_service.cpp.obj /FdCMakeFiles\\campus_core.dir\\campus_core.pdb /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\service\\audit_service.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\service\\audit_service.cpp",
+  "output": "CMakeFiles\\campus_core.dir\\service\\audit_service.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_core.dir\\service\\auth_service.cpp.obj /FdCMakeFiles\\campus_core.dir\\campus_core.pdb /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\service\\auth_service.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\service\\auth_service.cpp",
+  "output": "CMakeFiles\\campus_core.dir\\service\\auth_service.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_core.dir\\service\\background_task_service.cpp.obj /FdCMakeFiles\\campus_core.dir\\campus_core.pdb /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\service\\background_task_service.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\service\\background_task_service.cpp",
+  "output": "CMakeFiles\\campus_core.dir\\service\\background_task_service.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_core.dir\\service\\notification_service.cpp.obj /FdCMakeFiles\\campus_core.dir\\campus_core.pdb /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\service\\notification_service.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\service\\notification_service.cpp",
+  "output": "CMakeFiles\\campus_core.dir\\service\\notification_service.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_core.dir\\service\\registration_service.cpp.obj /FdCMakeFiles\\campus_core.dir\\campus_core.pdb /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\service\\registration_service.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\service\\registration_service.cpp",
+  "output": "CMakeFiles\\campus_core.dir\\service\\registration_service.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_core.dir\\service\\role_service.cpp.obj /FdCMakeFiles\\campus_core.dir\\campus_core.pdb /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\service\\role_service.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\service\\role_service.cpp",
+  "output": "CMakeFiles\\campus_core.dir\\service\\role_service.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_core.dir\\service\\service_result.cpp.obj /FdCMakeFiles\\campus_core.dir\\campus_core.pdb /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\service\\service_result.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\service\\service_result.cpp",
+  "output": "CMakeFiles\\campus_core.dir\\service\\service_result.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_core.dir\\service\\session_service.cpp.obj /FdCMakeFiles\\campus_core.dir\\campus_core.pdb /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\service\\session_service.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\service\\session_service.cpp",
+  "output": "CMakeFiles\\campus_core.dir\\service\\session_service.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_core.dir\\service\\stats_service.cpp.obj /FdCMakeFiles\\campus_core.dir\\campus_core.pdb /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\service\\stats_service.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\service\\stats_service.cpp",
+  "output": "CMakeFiles\\campus_core.dir\\service\\stats_service.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_core.dir\\service\\ticket_service.cpp.obj /FdCMakeFiles\\campus_core.dir\\campus_core.pdb /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\service\\ticket_service.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\service\\ticket_service.cpp",
+  "output": "CMakeFiles\\campus_core.dir\\service\\ticket_service.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_ticketing.dir\\main.cpp.obj /FdCMakeFiles\\campus_ticketing.dir\\ /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\main.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\main.cpp",
+  "output": "CMakeFiles\\campus_ticketing.dir\\main.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_ticketing.dir\\ui\\console_io.cpp.obj /FdCMakeFiles\\campus_ticketing.dir\\ /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\ui\\console_io.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\ui\\console_io.cpp",
+  "output": "CMakeFiles\\campus_ticketing.dir\\ui\\console_io.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_ticketing.dir\\ui\\console_view.cpp.obj /FdCMakeFiles\\campus_ticketing.dir\\ /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\ui\\console_view.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\ui\\console_view.cpp",
+  "output": "CMakeFiles\\campus_ticketing.dir\\ui\\console_view.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_ticketing.dir\\ui\\console_view_admin.cpp.obj /FdCMakeFiles\\campus_ticketing.dir\\ /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\ui\\console_view_admin.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\ui\\console_view_admin.cpp",
+  "output": "CMakeFiles\\campus_ticketing.dir\\ui\\console_view_admin.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_ticketing.dir\\ui\\console_view_organizer.cpp.obj /FdCMakeFiles\\campus_ticketing.dir\\ /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\ui\\console_view_organizer.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\ui\\console_view_organizer.cpp",
+  "output": "CMakeFiles\\campus_ticketing.dir\\ui\\console_view_organizer.cpp.obj"
+},
+{
+  "directory": "D:/personnal desktop/campus-ticketing-code/code/build",
+  "command": "C:\\PROGRA~1\\MIB055~1\\2022\\COMMUN~1\\VC\\Tools\\MSVC\\1441~1.341\\bin\\Hostx64\\x64\\cl.exe  /nologo /TP -I\"D:\\personnal desktop\\campus-ticketing-code\\code\" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD -Z7 /utf-8 /W4 /FoCMakeFiles\\campus_tests.dir\\tests\\test_main.cpp.obj /FdCMakeFiles\\campus_tests.dir\\ /FS -c \"D:\\personnal desktop\\campus-ticketing-code\\code\\tests\\test_main.cpp\"",
+  "file": "D:\\personnal desktop\\campus-ticketing-code\\code\\tests\\test_main.cpp",
+  "output": "CMakeFiles\\campus_tests.dir\\tests\\test_main.cpp.obj"
+}
+]
