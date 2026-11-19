@@ -1,0 +1,80 @@
+@startuml
+' ============================================================
+' 图2-5 时序图：报名与取消递补
+' lifeline：M1/M3/M4/M5/M6/M8/M9
+' ============================================================
+skinparam defaultFontName "Noto Sans CJK SC"
+skinparam dpi 150
+skinparam shadowing false
+skinparam sequence {
+  ArrowColor #475569
+  ArrowFontColor #334155
+  ArrowFontSize 11
+  ActorBorderColor #64748B
+  ActorBackgroundColor #F8FAFC
+  ActorFontSize 12
+  ParticipantBorderColor #64748B
+  ParticipantBackgroundColor #FFFFFF
+  ParticipantFontSize 12
+  LifeLineBorderColor #CBD5E1
+  LifeLineBackgroundColor #F8FAFC
+  GroupBorderColor #94A3B8
+  GroupBackgroundColor #F8FAFC
+  GroupFontSize 12
+  NoteBackgroundColor #FFFBEB
+  NoteBorderColor #FCD34D
+  NoteFontSize 10
+  ParticipantPadding 16
+  BoxPadding 12
+}
+skinparam maxMessageSize 190
+autonumber
+
+actor "参与者" as U #F8FAFC
+participant "Web 前端" as Web #E5E7EB
+participant "M1 账号与认证" as M1 #DBEAFE
+participant "M3 活动与版本" as M3 #DBEAFE
+participant "M4 场次与类别" as M4 #DBEAFE
+participant "M5 报名与候补" as M5 #DBEAFE
+participant "M6 验票与签到" as M6 #DBEAFE
+participant "M8 通知中心" as M8 #DCFCE7
+participant "M9 审计与任务" as M9 #DCFCE7
+
+group 报名
+  U -> Web : 提交报名（场次、类别、operationId）
+  Web -> M1 : 校验会话与账号状态
+  M1 --> Web : 通过
+  Web -> M5 : 报名请求
+  M5 -> M5 : 幂等键校验
+  M5 -> M3 : 读取当前发布版本
+  M5 -> M4 : 读取场次/类别余量
+  M5 -> M5 : 锁（logicalSessionId, logicalCategoryId）
+  M5 -> M4 : 排他记录 + 容量检查
+  alt 类别与场次有余量，且无更早有效候补
+    M5 -> M5 : 创建“已报名”记录
+    M5 -> M6 : 生成验票凭证
+    M5 -> M9 : 记录审计日志
+    M5 --> Web : 报名成功
+    Web --> U : 成功 + 凭证
+  else 名额不足
+    M5 -> M5 : 创建候补记录（分配序号）
+    M5 --> Web : 进入候补
+    Web --> U : 候补顺位
+  end
+end
+
+group 取消 → 递补
+  U -> Web : 取消报名
+  Web -> M5 : 取消请求
+  M5 -> M4 : 释放名额
+  loop 对每个可递补的候补记录
+    M5 -> M5 : 取最早有效候补
+    M5 -> M6 : 生成新凭证
+  end
+  M5 -> M8 : 写通知事件（递补成功）
+  M5 -> M9 : 记录审计日志
+  M8 --> Web : 递补成功站内通知（未读）
+  Web --> U : 展示递补成功通知
+end
+
+@enduml

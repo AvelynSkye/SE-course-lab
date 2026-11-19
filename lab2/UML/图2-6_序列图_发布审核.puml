@@ -1,0 +1,87 @@
+@startuml
+' ============================================================
+' 图2-6 序列图：提交审核与发布前复核
+' lifeline：M1/M2/M3/M4/M9
+' ============================================================
+skinparam defaultFontName "Noto Sans CJK SC"
+skinparam dpi 150
+skinparam shadowing false
+skinparam sequence {
+  ArrowColor #475569
+  ArrowFontColor #334155
+  ArrowFontSize 11
+  ActorBorderColor #64748B
+  ActorBackgroundColor #F8FAFC
+  ActorFontSize 12
+  ParticipantBorderColor #64748B
+  ParticipantBackgroundColor #FFFFFF
+  ParticipantFontSize 12
+  LifeLineBorderColor #CBD5E1
+  LifeLineBackgroundColor #F8FAFC
+  GroupBorderColor #94A3B8
+  GroupBackgroundColor #F8FAFC
+  GroupFontSize 12
+  NoteBackgroundColor #FFFBEB
+  NoteBorderColor #FCD34D
+  NoteFontSize 10
+  ParticipantPadding 16
+  BoxPadding 12
+}
+skinparam maxMessageSize 190
+autonumber
+
+actor "组织者" as O #F8FAFC
+actor "管理员" as A #F8FAFC
+participant "Web 前端" as Web #E5E7EB
+participant "M1 账号与认证" as M1 #DBEAFE
+participant "M2 角色与授权" as M2 #DBEAFE
+participant "M3 活动与版本" as M3 #DBEAFE
+participant "M4 场次与类别" as M4 #DBEAFE
+participant "M9 审计与任务" as M9 #DCFCE7
+
+group 提交审核
+  O -> Web : 提交审核（activityVersionId）
+  Web -> M1 : 校验登录态与账号状态
+  Web -> M3 : 提交审核
+  M3 -> M4 : 校验场次/类别/时间/容量
+  M3 -> M3 : 必填字段 + 跨字段校验
+  M3 -> M9 : 记录审计日志
+  M3 --> Web : 版本状态 = 待审核
+  Web --> O : 提交成功
+end
+
+group 审核
+  A -> Web : 打开审核详情
+  Web -> M1 : 校验管理员角色
+  Web -> M2 : 校验场次/角色权限
+  Web -> M3 : 读取审核详情
+  M3 -> M3 : 审核回避校验（非本人创建）
+  alt 审核通过
+    A -> Web : 通过
+    Web -> M3 : 审核通过
+    M3 -> M9 : 记录审计日志
+    M3 --> Web : 审核通过待发布
+  else 审核驳回
+    A -> Web : 驳回 + 原因
+    Web -> M3 : 驳回
+    M3 -> M9 : 记录审计日志
+    M3 --> Web : 审核驳回
+  end
+end
+
+group 发布前复核
+  O -> Web : 发布
+  Web -> M3 : 发布
+  M3 -> M4 : 复核时间/容量/地点冲突/逻辑ID
+  alt 复核通过
+    M3 -> M3 : 新版本 = 当前发布；旧版本 = 历史
+    M3 -> M9 : 记录审计日志
+    M3 --> Web : 发布成功
+    Web --> O : 当前发布版本已更新
+  else 复核失败
+    M3 --> Web : 拒绝发布
+    Web --> O : 保持“审核通过待发布”，原版本继续生效
+  end
+end
+
+@enduml

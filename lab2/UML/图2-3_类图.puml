@@ -1,0 +1,215 @@
+@startuml
+' ============================================================
+' 校园活动票务与报名系统 - 分层类图
+' 自上而下：用户/角色 → 业务核心 → 数据实体
+' 类型配色：实体=蓝，服务=绿，枚举=黄，工具=灰
+' ============================================================
+skinparam defaultFontName "Noto Sans CJK SC"
+skinparam dpi 150
+skinparam shadowing false
+skinparam roundcorner 0
+skinparam nodesep 70
+skinparam ranksep 34
+skinparam linetype ortho
+skinparam class {
+  BackgroundColor #FFFFFF
+  HeaderBackgroundColor #F0F0F0
+  BorderColor #8C8C8C
+  FontColor #000000
+  FontSize 13
+}
+skinparam stereotypeFontColor #333333
+skinparam arrow {
+  Color #333333
+  FontColor #333333
+  FontSize 11
+  Thickness 1.2
+}
+skinparam legend {
+  BackgroundColor #FFFFFF
+  BorderColor #999999
+  FontColor #333333
+  FontSize 11
+}
+' ---------- 类型配色由 postprocess_headers.py 写入 ----------
+hide empty members
+hide circle
+skinparam titleFontSize 22
+skinparam titleFontColor #000000
+title 校园活动票务与报名系统 · 分层类图
+
+' ============================================================
+' 顶层：用户与角色
+' ============================================================
+class "用户\nUser" as User <<entity>> {
+  - id : Long
+  - account : String
+  - name : String
+  - status : 启用/停用
+  - mustChangePassword : bool
+  - failCount : int
+  - lockUntil : DateTime
+}
+enum "角色\nRole" as Role <<enum>> {
+  普通参与者
+  组织者
+  检票员
+  管理员
+  --
+  - 固定四类
+}
+class "用户角色\nUserRole" as UserRole <<entity>> {
+  - userId : Long
+  - roleCode : Role
+}
+class "场次授权\nSessionGrant" as SessionGrant <<entity>> {
+  - userId : Long
+  - logicalSessionId : Long
+  - status : 有效/失效
+}
+
+' ============================================================
+' 中层：业务核心
+' ============================================================
+class "活动\nActivity" as Activity <<entity>> {
+  - id : Long
+  - title : String
+  - status : 未发布/已发布/已取消/已结束
+  - creatorId : Long
+}
+class "活动版本\nActivityVersion" as ActivityVersion <<entity>> {
+  - id : Long
+  - versionNo : int
+  - status : VersionStatus
+  - publishedAt : DateTime
+  --
+  + submitForReview() : void
+  + publish() : void
+}
+class "逻辑场次\nLogicalSession" as LogicalSession <<entity>> {
+  - id : Long
+  - cancelled : bool
+}
+class "场次版本\nSessionVersion" as SessionVersion <<entity>> {
+  - id : Long
+  - location : A1~A20
+  - startTime : DateTime
+  - endTime : DateTime
+  - regStart : DateTime
+  - regEnd : DateTime
+  - totalQuota : int
+}
+class "逻辑类别\nLogicalCategory" as LogicalCategory <<entity>> {
+  - id : Long
+}
+class "类别版本\nCategoryVersion" as CategoryVersion <<entity>> {
+  - id : Long
+  - name : String
+  - quota : int
+}
+class "报名记录\nRegistration" as Registration <<entity>> {
+  - id : Long
+  - userId : Long
+  - status : RegistrationStatus
+  - waitlistSeq : Long
+  --
+  + canCheckIn() : bool
+  + cancel() : void
+}
+enum "版本状态\nVersionStatus" as VersionStatus <<enum>> {
+  草稿
+  待审核
+  审核驳回
+  审核通过待发布
+  当前发布
+  历史版本
+}
+enum "报名状态\nRegistrationStatus" as RegistrationStatus <<enum>> {
+  候补
+  已报名
+  已签到
+  缺席
+  已取消
+}
+class "统计与导出服务\nStatService" as StatService <<service>> {
+  + queryStats(activityId) : StatResult
+  + exportRoster(activityId) : CSV
+}
+class "后台任务\nBackgroundTask" as BackgroundTask <<service>> {
+  - id : Long
+  - taskType : 候补截止/缺席/通知重试
+  - status : 待执行/成功/失败
+  - retryCount : int
+}
+
+' ============================================================
+' 底层：数据实体
+' ============================================================
+class "验票凭证\nTicket" as Ticket <<entity>> {
+  - id : Long
+  - code : UUID v4
+  - status : 有效/失效
+  --
+  + verify(window) : bool
+}
+class "签到事件\nCheckInEvent" as CheckInEvent <<entity>> {
+  - id : Long
+  - checkedAt : DateTime
+}
+class "站内通知\nNotification" as Notification <<entity>> {
+  - id : Long
+  - eventId : String
+  - type : 递补/截止/活动取消/场次取消
+  - read : bool
+}
+class "审计日志\nAuditLog" as AuditLog <<entity>> {
+  - id : Long
+  - action : String
+  - result : 成功/失败
+  - createdAt : DateTime
+}
+class "幂等键\nIdempotencyKey" as IdempotencyKey <<util>> {
+  - operationId : String
+  - requestHash : String
+  - resultRef : String
+}
+
+' ============================================================
+' 关系：优先上下方向
+' ============================================================
+User "1" -- "0..*" UserRole
+Role "1" -- "0..*" UserRole
+User "1" -- "0..*" SessionGrant
+LogicalSession "1" -- "0..*" SessionGrant
+User "1" -- "0..*" Activity : 创建
+User "1" -- "0..*" Registration
+
+Activity "1" *-- "1..*" ActivityVersion
+ActivityVersion "1" *-- "1..*" SessionVersion
+LogicalSession "1" -- "1..*" SessionVersion : 逻辑归属
+SessionVersion "1" *-- "1..*" CategoryVersion
+LogicalCategory "1" -- "1..*" CategoryVersion : 逻辑归属
+
+ActivityVersion "1" -- "0..*" Registration : R1 报名快照
+SessionVersion "1" -- "0..*" Registration : R2 场次快照
+CategoryVersion "1" -- "0..*" Registration : R3 类别快照
+ActivityVersion -- VersionStatus
+Registration -- RegistrationStatus
+StatService ..> Registration
+
+Registration "1" *-- "1..*" Ticket
+Registration "1" *-- "0..*" CheckInEvent
+Registration "1" -- "0..*" Notification : 触发
+BackgroundTask ..> Notification
+StatService ..> AuditLog
+BackgroundTask ..> AuditLog
+IdempotencyKey ..> Registration
+
+legend bottom
+  **图层** 顶层：用户与角色　中层：业务核心　底层：数据实体
+  **类型** <color:#DBEAFE>■</color> 实体类　<color:#DCFCE7>■</color> 接口/服务类　<color:#FEF3C7>■</color> 枚举类　<color:#E5E7EB>■</color> 工具/辅助类
+  **快照关联** R1 报名时版本　R2 场次快照　R3 类别快照
+  **符号** ◆=组合　实线=关联　虚线=依赖　两端数字=多重度
+end legend
+
+@enduml

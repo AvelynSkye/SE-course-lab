@@ -1,0 +1,149 @@
+@startuml
+' 图2-1 用例图（3×3网格，四角角色，无交叉）
+skinparam defaultFontName "Noto Sans CJK SC"
+skinparam dpi 150
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam linetype ortho
+skinparam usecase {
+  BackgroundColor #FFFFFF
+  BorderColor #94A3B8
+  FontColor #0F172A
+  FontSize 12
+}
+skinparam actor {
+  BackgroundColor #F8FAFC
+  BorderColor #64748B
+  FontColor #0F172A
+  FontSize 13
+}
+skinparam package {
+  BackgroundColor #FFFFFF
+  BorderColor #CBD5E1
+  FontSize 14
+  FontStyle bold
+}
+skinparam arrow {
+  Color #475569
+  FontSize 11
+}
+skinparam note {
+  BackgroundColor #FEF9C3
+  BorderColor #CA8A04
+  FontSize 10
+}
+skinparam nodesep 12
+skinparam ranksep 24
+hide stereotype
+
+' ---------- 上方角色 ----------
+actor "普通参与者" as P
+actor "检票员" as C
+
+package "报名" as PK1 #FFF7ED {
+  usecase "报名" as UC10
+  usecase "加入候补" as UC11 #F1F5F9
+  usecase "取消报名" as UC12
+  usecase "查看我的报名" as UC13
+}
+
+package "验票" as PK2 #EFF6FF {
+  usecase "验票" as UC14
+  usecase "场次授权校验" as UC20 #F1F5F9
+}
+
+package "通知" as PK3 #FFFFFF {
+  usecase "查看通知" as UC17
+}
+
+package "活动组织" as PK4 #F0FDF4 {
+  usecase "创建/编辑活动\n（场次与类别）" as UC05
+  usecase "提交审核" as UC06
+  usecase "发布活动" as UC08
+  usecase "取消活动/场次" as UC09
+}
+
+package "名单统计" as PK5 #FFFFFF {
+  usecase "查询/导出名单\n与统计" as UC15
+  usecase "数据快照" as UC21 #F1F5F9
+}
+
+package "审核权限" as PK6 #F5F3FF {
+  usecase "审核活动" as UC07
+  usecase "审核回避校验" as UC19 #F1F5F9
+  usecase "管理账号权限" as UC034
+  usecase "查询审计日志" as UC18
+}
+
+usecase "登录" as UC01
+usecase "强制改密" as UC02 #F1F5F9
+
+note top of UC01 : 所有角色均须登录；\n首次登录强制改密
+
+' ---------- 下方角色 ----------
+actor "组织者" as O
+actor "管理员" as A
+
+' ============ 角色关联（登录用注释，不画线） ============
+P -down-> UC10
+P -down-> UC12
+P -down-> UC13
+P -down-> UC14
+P -down-> UC17
+
+C -down-> UC14
+
+O -up-> UC05
+O -up-> UC06
+O -up-> UC08
+O -up-> UC09
+O -up-> UC15
+O -up-> UC17
+
+A -up-> UC07
+A -up-> UC034
+A -up-> UC18
+A -up-> UC15
+
+' ============ include / extend ============
+UC11 ..> UC10 : extend
+UC01 .down.> UC02 : include
+UC14 ..> UC20 : include
+UC07 ..> UC19 : include
+UC15 .down.> UC21 : include
+
+' ============ 3×3 网格布局 ============
+' 行约束（左→右）
+PK1 -[hidden]right-> PK2
+PK3 -[hidden]right-> UC01
+PK4 -[hidden]right-> PK5
+PK5 -[hidden]right-> PK6
+' 列约束（上→下）
+PK1 -[hidden]down-> PK3
+PK3 -[hidden]down-> PK4
+PK2 -[hidden]down-> UC01
+UC01 -[hidden]down-> PK5
+
+' 角色对齐
+P -[hidden]right-> C
+O -[hidden]right-> A
+P -[hidden]down-> UC10
+C -[hidden]down-> UC14
+UC18 -[hidden]down-> A
+UC05 -[hidden]down-> O
+
+' 包内用例纵向
+UC10 -[hidden]down-> UC11
+UC11 -[hidden]down-> UC12
+UC12 -[hidden]down-> UC13
+UC14 -[hidden]down-> UC20
+UC05 -[hidden]down-> UC06
+UC06 -[hidden]down-> UC08
+UC08 -[hidden]down-> UC09
+UC15 -[hidden]down-> UC21
+UC07 -[hidden]down-> UC19
+UC19 -[hidden]down-> UC034
+UC034 -[hidden]down-> UC18
+UC01 -[hidden]down-> UC02
+
+@enduml

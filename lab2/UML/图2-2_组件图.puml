@@ -1,0 +1,108 @@
+@startuml
+' ============================================================
+' 图2-2 组件图：校园活动票务与报名系统
+' 1 个系统边界 / Web + 9 模块 / 4 角色 / 关键依赖
+' ============================================================
+skinparam defaultFontName "Noto Sans CJK SC"
+skinparam dpi 150
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam componentStyle uml2
+skinparam component {
+  BackgroundColor #DBEAFE
+  BorderColor #64748B
+  FontColor #0F172A
+  FontSize 12
+}
+skinparam package {
+  BackgroundColor #F8FAFC
+  BorderColor #CBD5E1
+  FontSize 14
+  FontStyle bold
+}
+skinparam actor {
+  BackgroundColor #F8FAFC
+  BorderColor #64748B
+  FontColor #0F172A
+  FontSize 13
+}
+skinparam rectangle {
+  BackgroundColor #FFFFFF
+  BorderColor #334155
+  FontSize 16
+  FontStyle bold
+}
+skinparam arrow {
+  Color #475569
+  FontSize 11
+}
+skinparam note {
+  BackgroundColor #FFFBEB
+  BorderColor #FCD34D
+  FontColor #78350F
+  FontSize 11
+}
+hide stereotype
+skinparam nodesep 55
+skinparam ranksep 30
+skinparam linetype ortho
+
+actor "普通参与者" as P
+actor "组织者" as O
+actor "检票员" as C
+actor "管理员" as A
+
+rectangle "校园活动票务与报名系统" {
+  package "接入层" {
+    component "Web 前端\n（四角色）" as Web #E5E7EB
+  }
+  package "业务层" {
+    component "M1 账号与认证\n登录 / 改密 / 锁定" as M1
+    component "M2 角色与授权\n角色 / 场次授权" as M2
+    component "M3 活动与版本\n草稿 / 审核 / 发布" as M3
+    component "M4 场次与类别\n逻辑ID / 容量 / 时间" as M4
+    component "M5 报名与候补\n报名 / 候补 / 递补" as M5
+    component "M6 验票与签到\n凭证 / 验票 / 缺席" as M6
+    component "M7 名单与统计\n名单 / 导出 / 到场率" as M7
+  }
+  package "支撑层" {
+    component "M8 通知中心\n四类通知 / 未读" as M8 #DCFCE7
+    component "M9 审计与后台任务\n审计 / 截止 / 重试" as M9 #DCFCE7
+  }
+}
+
+' ---------- 外部角色 ----------
+P --> Web
+O --> Web
+C --> Web
+A --> Web
+
+' ---------- 关键依赖 ----------
+Web --> M1
+Web --> M2
+Web --> M3
+Web --> M5
+Web --> M6
+Web --> M7
+Web --> M8
+
+M3 --> M4
+M5 --> M4
+M5 --> M6
+M6 --> M5
+M5 --> M8
+M6 --> M2
+M7 --> M5
+M7 --> M4
+M9 ..> M5 : 截止/缺席判定
+M9 ..> M8 : 通知重试
+note right of M9
+  审计为横切关注点：
+  各业务模块均写 M9 审计日志（连线省略）
+end note
+note bottom of M3
+  M5→M6：生成验票凭证
+  M6→M5：验票读取报名记录
+end note
+
+@enduml

@@ -1,0 +1,85 @@
+@startuml
+' ============================================================
+' 图2-4 活动图：校园活动票务与报名系统端到端流程
+' 5 条角色泳道 / 动作标模块号
+' ============================================================
+skinparam defaultFontName "Noto Sans CJK SC"
+skinparam dpi 150
+skinparam shadowing false
+skinparam roundcorner 6
+skinparam ActivityFontSize 12
+skinparam ActivityFontColor #0F172A
+skinparam ArrowFontSize 10
+skinparam ArrowColor #475569
+skinparam swimlaneWidth 190
+skinparam ConditionEndStyle hline
+skinparam nodesep 18
+skinparam ranksep 20
+skinparam activity {
+  BackgroundColor #FFFFFF
+  BorderColor #64748B
+  FontColor #0F172A
+}
+skinparam swimlane {
+  BorderColor #94A3B8
+  BackgroundColor #F8FAFC
+  FontColor #0F172A
+  FontStyle bold
+}
+skinparam note {
+  BackgroundColor #FFFBEB
+  BorderColor #FCD34D
+  FontColor #78350F
+  FontSize 10
+}
+
+|组织者|
+start
+:创建/编辑活动与场次\n提交审核 [M3/M4];
+|管理员|
+:审核版本 [M3];
+if (审核通过?) then (否)
+  :驳回并填写原因 [M3];
+  |组织者|
+  :修改草稿后重新提交 [M3];
+  |管理员|
+  :再次审核 [M3];
+endif
+|组织者|
+:发布活动 [M3]\n发布前复核;
+|参与者|
+:浏览/筛选 → 选择场次与类别\n提交报名 [M3/M4/M5];
+|系统|
+if (类别与场次有余量\n且无更早有效候补?) then (是)
+  :创建报名记录 + 验票凭证\n[M5/M6];
+else (否)
+  :加入候补队列 [M5];
+endif
+|参与者|
+:查看结果/凭证 [M5/M6];
+|系统|
+if (取消报名且\n存在更早有效候补?) then (是)
+  :释放名额 → 递补最早候补\n生成新凭证 [M5/M6];
+  :写递补成功通知 [M8];
+else (否)
+  :维持原报名记录 [M5];
+endif
+|检票员|
+:扫码或手输验票码 [M6];
+|系统|
+if (已授权且\n在验票窗口内?) then (是)
+  :首次签到 [M6];
+else (否)
+  :拒绝并提示 [M6];
+endif
+:场次结束未签到\n→ 判定缺席 [M9/M6];
+note right
+  由 M9 后台任务按场次
+  结束时间触发，非顺序步骤
+end note
+:写站内通知 / 审计日志 [M8/M9];
+|组织者|
+:查看名单 / 统计 / 导出 [M7];
+stop
+
+@enduml
